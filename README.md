@@ -4,8 +4,7 @@ Manage NetspherePirates Accounts through PHP.
 
 ### Requirements
 Webserver with PHP >=6  
-or for PHP 5.X  
-    [https://github.com/paragonie/random_compat](random_compat library)
+or for servers where only PHP 5.X is available: https://github.com/paragonie/random_compat
 
 ### Basic Example
 
