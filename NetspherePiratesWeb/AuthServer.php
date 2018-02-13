@@ -2,7 +2,6 @@
 	namespace NetspherePiratesWeb
 	{
 		use \NetspherePiratesWeb\Models\Account as Account;
-		use \NetspherePiratesWeb\Models\Session as Session;
 		
 		class AuthServer
 		{
@@ -61,7 +60,7 @@
 			{
 				if($account->id() == NULL && $upsert == true)
 				{
-					$this->database->query('INSERT INTO accounts (Id, Username, Nickname, Password, Salt, SecurityLevel) VALUES (NULL, ?, ?, ?, ?, ?);', array($account->username(), $account->nickname(), $account->password(), $account->salt(), $account->security_level()));	
+					return $this->database->query('INSERT INTO accounts (Id, Username, Nickname, Password, Salt, SecurityLevel) VALUES (NULL, ?, ?, ?, ?, ?);', array($account->username(), $account->nickname(), $account->password(), $account->salt(), $account->security_level()));	
 				}
 				else if($account->id == NULL && $upsert == false)
 				{
@@ -69,7 +68,7 @@
 				}
 				else
 				{
-					$this->database->query('UPDATE accounts SET Username = ?, Nickname = ?, Password = ?, Salt = ?, SecurityLevel = ? WHERE Id = ?;', array($account->username(), $account->nickname(), $account->password(), $account->salt(), $account->security_level(), $account->id()));
+					return $this->database->query('UPDATE accounts SET Username = ?, Nickname = ?, Password = ?, Salt = ?, SecurityLevel = ? WHERE Id = ?;', array($account->username(), $account->nickname(), $account->password(), $account->salt(), $account->security_level(), $account->id()));	
 				}
 			}
 			
@@ -80,9 +79,12 @@
 				$account->set_nickname($nickname);
 				$account->set_password($password);
 				
-				$this->save_account($account, true);
+				$result = $this->save_account($account, true);
+				if($result->inserted_id > 0){
+					return $this->get_account_by_id($result->inserted_id);
+				}
 				
-				return $account;
+				return NULL;
 			}
 		}
 	}

@@ -46,6 +46,8 @@ $auth_server->create_account('username', 'password', 'nickname');
 $auth_server->create_account('username', 'password');
 ```
 
+The function returns either the new account object, or NULL (if an account with the username already exists).
+
 ### Get account info
 
 By id...
@@ -58,8 +60,28 @@ $account = $auth_server->get_account_by_id(1);
 $account = $auth_server->get_account_by_username('EpitaphHaseo');
 ```
 
+Then you can get the values like this
+```php
+$account->id();
+$account->username();
+$account->nickname();
+$account->password(); // salted and hashed
+$account->salt(); // the salt used in the password
+$account->security_level(); // one of the values in \NetspherePiratesWeb\Constants::$security_levels
+```
+
 ### Get player info
 
 ```php
 $player = $game_server->get_player_by_id(1);
+
+$player->id();
+$player->tutorial_state();
+$player->level();
+$player->total_experience();
+$player->pen();
+$player->ap();
+$player->coins1();
+$player->coins2();
+$player->current_character_slot();
 ```
