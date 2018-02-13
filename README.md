@@ -3,8 +3,8 @@
 Manage NetspherePirates Accounts through PHP.
 
 ### Requirements
-Webserver with PHP >=6
-or for PHP 5.X
+Webserver with PHP >=6  
+or for PHP 5.X  
     [https://github.com/paragonie/random_compat](random_compat library)
 
 ### Basic Example
@@ -30,10 +30,10 @@ $game_database = new Database(
 	'DATABASE_USER_HERE',
 	'PASSWORD_HERE'
 );
-```
 
 $auth_server = new AuthServer($auth_database);
-$game_server = new GameServer($game_database);`
+$game_server = new GameServer($game_database);
+```
 
 ### Create an account
 
