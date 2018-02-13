@@ -70,6 +70,12 @@ $account->salt(); // the salt used in the password
 $account->security_level(); // one of the values in \NetspherePiratesWeb\Constants::$security_levels
 ```
 
+If you want to check the password of a user (in example for a login form) you can use the following function
+```php
+$account->check_password('asdf123');
+```
+It returns true if the password is correct, or false if it isn't. Easy, right?
+
 ### Get player info
 
 ```php
