@@ -1,10 +1,10 @@
 # NetspherePiratesWeb
 
-Manage NetspherePirates Accounts through PHP.
+Manage NetspherePirates accounts through PHP.
 
 ### Requirements
 PHP 7 or higher (or for servers where only PHP 5.X is available: https://github.com/paragonie/random_compat )  
-PDO compability
+PDO compatibility
 
 ### Basic Example
 
@@ -46,7 +46,7 @@ $auth_server->create_account('username', 'password', 'nickname');
 $auth_server->create_account('username', 'password');
 ```
 
-The function returns either the new account object, or NULL (if an account with the username already exists).
+The function returns either the new account object, or `NULL` (if an account with the username already exists).
 
 ### Get account info
 
@@ -74,7 +74,7 @@ If you want to check the password of a user (in example for a login form) you ca
 ```php
 $account->check_password('asdf123');
 ```
-It returns true if the password is correct, or false if it isn't. Easy, right?
+It returns `true` if the password is correct, or `false` if it isn't. Easy, right?
 
 ### Get player info
 
